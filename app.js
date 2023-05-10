@@ -18,8 +18,8 @@ require("./config")(app);
 const indexRoutes = require("./routes/index.routes");
 app.use("/api", indexRoutes);
 
-const profileRoutes = require("./routes/profile");
-app.use("/profile", isAuthenticated, profileRoutes);
+// const profileRoutes = require("./routes/profile");
+// app.use("/profile",profileRoutes, isAuthenticated);
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
