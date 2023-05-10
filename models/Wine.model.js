@@ -1,22 +1,22 @@
 const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
-const userSchema = new Schema(
+const wineSchema = new Schema(
   {
     name: {
       type: String,
       required: [true, 'Name is required.'],
-    },
-    email: {
-      type: String,
-      required: [true, 'Email is required.'],
       unique: true,
-      lowercase: true,
-      trim: true
     },
-    password: {
+    type: {
       type: String,
-      required: [true, 'Password is required.']
+      required: [true, 'Type is required.'],
+      unique: true,
+      enum: ['acidity', 'sweetness', 'alcohol'],
+    },
+    region: {
+        type: String,
+        required: [true, 'Region is required.'],
     }
   },
   {
@@ -25,6 +25,6 @@ const userSchema = new Schema(
   }
 );
 
-const User = model("User", userSchema);
+const Wine = model("User", wineSchema);
 
-module.exports = User;
+module.exports = Wine;
