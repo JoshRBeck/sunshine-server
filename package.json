@@ -12,6 +12,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+<<<<<<< HEAD
+=======
+    "express-jwt": "^8.4.1",
+>>>>>>> 331500ef574bd5da71d2414944a4390fcd473e4e
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.1.0",
     "morgan": "^1.10.0"
