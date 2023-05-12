@@ -11,20 +11,56 @@ const wineSchema = new Schema(
     type: {
       type: String,
       required: [true, 'Type is required.'],
-      unique: true,
-      enum: ['acidity', 'sweetness', 'alcohol'],
+      enum: ['White', 'Red', 'Rosé']
+    },
+    attributes: [
+      {
+        name: {
+          type: String,
+          required: [true, 'Attribute name is required.'],
+        },
+        value: {
+          type: Schema.Types.Mixed,
+          required: [true, 'Attribute value is required.'],
+        },
+      }
+    ],
+    variety: {
+      type: String,
+      required: [true, 'Variety is required.'],
+      enum: [
+        'Chardonnay',
+        'Sauvignon Blanc',
+        'Cabernet Sauvignon',
+        'Merlot',
+        'Pinot Noir',
+        'Syrah/Shiraz',
+        'Malbec',
+        'Zinfandel',
+        'Riesling',
+        'Gewürztraminer',
+        'Pinot Grigio/Pinot Gris',
+        'Sangiovese',
+        'Tempranillo',
+        'Grenache/Garnacha',
+        'Nebbiolo',
+        'Chenin Blanc',
+        'Viognier',
+        'Grüner Veltliner',
+        'Moscato/Muscat',
+        'Barbera'
+      ],
     },
     region: {
-        type: String,
-        required: [true, 'Region is required.'],
+      type: String,
+      required: [true, 'Region is required.'],
     }
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`    
     timestamps: true
   }
 );
 
-const Wine = model("User", wineSchema);
+const Wine = model("Wine", wineSchema);
 
 module.exports = Wine;
