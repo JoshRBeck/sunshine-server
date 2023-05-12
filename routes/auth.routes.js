@@ -54,6 +54,8 @@ router.post("/login", (req, res) => {
 
         const payload = { _id, email, name };
 
+        console.log("password s correct!!!!!!")
+
         // Create and sign the token
         const authToken = jwt.sign(payload, process.env.TOKEN_SECRET, {
           algorithm: "HS256",
