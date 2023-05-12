@@ -7,6 +7,7 @@ const router = require("express").Router();
 const saltRounds = 10
 
 router.post("/signup", async (req, res) => {
+  console.log("signup called")
   try {
     const { name, email, password } = req.body;
     console.log(req.body);
