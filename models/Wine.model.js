@@ -54,7 +54,19 @@ const wineSchema = new Schema(
     region: {
       type: String,
       required: [true, 'Region is required.'],
-    }
+    },
+    weather: {
+      type: String,
+      enum: ["Sunshine", "Warmsunset", "WinterSnow", "Raining" ],
+    },
+    foodpairings: {
+      type: String,
+      enum: ["Fish", "Beef"],
+    },
+    mood: {
+      type: String,
+      enum: ["Excitement", "Romance"]
+    },
   },
   {
     timestamps: true
