@@ -2,22 +2,18 @@ const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken")
 const { isAuthenticated } = require("../middleware/jwt.middleware")
-
 const router = require("express").Router();
 const saltRounds = 10
 
 router.post("/signup", async (req, res) => {
-  console.log("signup called")
   try {
     const { name, email, password } = req.body;
-    console.log(req.body);
     const verify = await User.findOne({ email });
     if (verify) {
       res.status(405).json({ message: "The email is already in use!" });
     } else {
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashedPassword = bcrypt.hashSync(password, salt);
-      console.log("hello");
       await User.create({
         name,
         email,
@@ -52,11 +48,7 @@ router.post("/login", (req, res) => {
 
       if (passwordCorrect) {
         const { _id, email, name } = foundUser;
-
         const payload = { _id, email, name };
-
-        console.log("password s correct!!!!!!")
-        console.log(req.body);
 
         // Create and sign the token
         const authToken = jwt.sign(payload, process.env.TOKEN_SECRET, {
@@ -73,7 +65,6 @@ router.post("/login", (req, res) => {
 
 // GET /auth/verify - Used to verify JWT stored on the client
 router.get("/verify", isAuthenticated, (req, res) => {
-  console.log("req.payload", req.payload);
   res.status(200).json(req.payload);
 });
 
