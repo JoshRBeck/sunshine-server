@@ -14,6 +14,18 @@ const { isAuthenticated } = require("./middleware/jwt.middleware");
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
 
+// app.js
+
+// Cross-Origin Resource Sharing
+
+app.use(
+    cors({
+      origin: process.env.FRONTEND_URL,
+      credentials: true
+    })
+  );
+  
+
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/api", indexRoutes);
