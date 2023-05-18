@@ -54,5 +54,6 @@ router.get("/wines/:wineId", (req, res) => {
       })
       .catch(err => res.json(err))
   })
+})
 
-  module.exports = router
+module.exports = router
