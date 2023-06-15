@@ -25,6 +25,9 @@ app.use("/api", indexRoutes);
 const authRoutes = require("./routes/auth.routes")
 app.use("/auth", authRoutes)
 
+const publicRouter = require("./routes/public.routes");
+app.use("/api", publicRouter);
+
 const wineRouter = require("./routes/wine.routes");
 app.use("/api", isAuthenticated, wineRouter);
 
